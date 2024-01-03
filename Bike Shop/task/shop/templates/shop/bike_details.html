@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<h2>{{ bike.name }}</h2>
+<p>frame: {{ bike.frame }}</p>
+<p>seat: {{ bike.seat }}</p>
+<p>tires: {{ bike.tire }}</p>
+<p>basket: {{ bike.has_basket|yesno:"yes,no" }}</p>
+<p>description: {{ bike.description }}</p>
+
+<br>
+{% if available %}
+    <h2>If you want to order the bike, fill in the form bellow</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" value="{{ bike.id }}" name="bike_pk">
+        <input type="submit" value="Order">
+    </form>
+{% else %}
+    <h2><b>Unfortunately, this bike is currently not available</b></h2>
+{% endif %}
+
+
+</html>

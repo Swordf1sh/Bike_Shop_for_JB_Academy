@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html lang="en">
+    <h2>Welcome to the Bike shop</h2>
+    <p>Choose one of out bikes:</p>
+    {% for bike in bikes %}
+        <p><a href="/bikes/{{ bike.id }}/">{{ bike }}</a></p>
+    {% endfor %}
+</html>
